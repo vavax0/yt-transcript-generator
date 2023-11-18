@@ -14,16 +14,12 @@ export default function Home() {
       </div>
       <div className="flex gap-10">
         <Card
-          title="Fast and Accurate"
-          content="Transcripts: Experience the power of technology as our advanced AI algorithms generate precise and reliable transcripts in mere seconds. Trust Kome to deliver text that reflects the content of your videos with remarkable accuracy."
+          title="Speedy Transcripts"
+          content="Our clever tool swiftly generates accurate transcripts in seconds. Depend on the Youtube Transcript Generator for trustworthy text that truly reflects your video."
         />
         <Card
-          title="Free of Charge"
-          content="We believe in democratizing accessibility to essential tools for content creators. Our YouTube Transcript Generator is entirely free to use, with no hidden costs or subscriptions required. Enjoy unlimited access to our transcription services without breaking the bank."
-        />
-        <Card
-          title="Multilanguage Support"
-          content="Kome's YouTube Transcript Generator supports over 120 languages, including English, Spanish, French, German, Italian, Japanese, Korean, Chinese, and more. We are continually expanding our language support to ensure that our users can access our services in their native tongue."
+          title="Free to Use"
+          content="We're all about leveling the playing field for creators. Our YouTube Transcript Generator comes at zero cost—no hidden charges or subscriptions. Get unlimited transcriptions without spending a cent."
         />
       </div>
     </main>
