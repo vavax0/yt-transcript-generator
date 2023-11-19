@@ -2,12 +2,12 @@ import { NextRequest } from "next/server";
 import axios from "axios";
 import * as cheerio from "cheerio";
 import { decode } from "html-entities";
-import OpenAI from "openai";
+// import OpenAI from "openai";
 import { ChatCompletion } from "openai/resources/chat/completions.mjs";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// const openai = new OpenAI({
+//   apiKey: process.env.OPENAI_API_KEY,
+// });
 
 export async function POST(request: NextRequest) {
   try {
