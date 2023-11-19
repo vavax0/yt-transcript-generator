@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import TopBarExtraInfo from "@/components/TopBarExtraInfo";
 
 import "./globals.css";
-import Footer from "@/components/Footer";
-import TopBarExtra from "@/components/TopBarExtra";
 
 const inter = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} min-h-screen flex flex-col`}>
-        <TopBarExtra />
+        <TopBarExtraInfo />
         <Navbar />
         {children}
         <Footer />

@@ -5,7 +5,9 @@ export default function Home() {
   return (
     <main className="flex flex-col flex-auto py-16 px-24 gap-10 items-center justify-center ">
       <div className="max-w-4xl flex flex-col items-center gap-10 ">
-        <h1 className="text-center">Get Any YouTube Transcript for Free 🎉</h1>
+        <h1 className="text-center">
+          Get YouTube Video Transcript in Seconds for Free 🎉
+        </h1>
         <p className="text-center max-w-2xl">
           Easily turn any Youtube video into text with our simple transcript
           generator.

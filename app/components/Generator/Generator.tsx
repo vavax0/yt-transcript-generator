@@ -1,15 +1,16 @@
 "use client";
 
-import React, { useState, FormEvent, useCallback } from "react";
+import React, { useState, FormEvent, useCallback, useMemo } from "react";
 import Loading from "@/components/Loading";
 import axios from "axios";
 
-const Generator: React.FC<{}> = () => {
+const Generator: React.FC = () => {
   const [youtubeUrl, setYoutubeUrl] = useState<string>();
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [transcriptData, setTranscriptData] = useState<{
-    title: string;
+    title?: string;
+    summary?: string;
     transcript: string;
   }>();
 
@@ -26,13 +27,14 @@ const Generator: React.FC<{}> = () => {
       event.preventDefault();
       setIsLoading(true);
       await axios
-        .post("/api/transcribe", {
+        .post("/api/transcript", {
           youtubeUrl,
         })
         .then((response) => {
           const data = response.data;
           setTranscriptData({
             transcript: data.transcript,
+            summary: data.summary,
             title: data.videoTitle,
           });
           setYoutubeUrl(undefined);
@@ -47,6 +49,10 @@ const Generator: React.FC<{}> = () => {
     },
     [youtubeUrl]
   );
+
+  const paragraphs = useMemo(() => {
+    return transcriptData?.transcript.split("###");
+  }, [transcriptData?.transcript]);
 
   return (
     <div className="flex flex-col items-center gap-10 w-full">
@@ -66,7 +72,7 @@ const Generator: React.FC<{}> = () => {
           />
           {hasError && <p className="text-red-500">Youtube URL is invalid</p>}
           <button
-            className="px-6 py-3 text-black font-medium rounded-md bg-white hover:bg-slate-200 transition ease-in-out"
+            className="px-6 py-3 text-black font-medium rounded-md bg-white hover:bg-slate-200 transition ease-in-out disabled:bg-zinc-300"
             type="submit"
             onClick={onGenerateTranscript}
           >
@@ -74,10 +80,16 @@ const Generator: React.FC<{}> = () => {
           </button>
         </form>
       )}
-      {!!transcriptData?.transcript && (
+      {transcriptData?.summary && (
+        <>
+          <h2>Summary</h2>
+          <p>{transcriptData?.summary}</p>
+        </>
+      )}
+      {!!paragraphs && (
         <>
           <div className="relative p-6 rounded-md border border-white border-opacity-50">
-            {!!transcriptData.title && (
+            {!!transcriptData?.title && (
               <h2 className="mb-6">{transcriptData.title}</h2>
             )}
             <button
@@ -86,7 +98,11 @@ const Generator: React.FC<{}> = () => {
             >
               X
             </button>
-            <p>{transcriptData?.transcript}</p>
+            {paragraphs.map((paragraph, index) => (
+              <p className="mb-5" key={index}>
+                {paragraph}
+              </p>
+            ))}
           </div>
           <button
             className="py-2 px-4 rounded-sm bg-zinc-900 transition ease-in-out"

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   return (
     <header
       className={`flex w-full items-center justify-center h-20 border-b border-gray-900`}
