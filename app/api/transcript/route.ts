@@ -97,46 +97,46 @@ const extractTextFromXML = (xmlString: string) => {
   return decode(transcript);
 };
 
-const fixTranscript = async (transcript: string) => {
-  console.log("start");
-  const completion = await openai.chat.completions
-    .create({
-      messages: [
-        {
-          role: "system",
-          content:
-            "You are an assistant designed to make a long string readable for human beings. Add necessary punctuations. Make sure the text is divided into paragraphs for better readability. Add '###' where a new paragraph starts.",
-        },
-        {
-          role: "user",
-          content: `Format the text: ${transcript}`,
-        },
-      ],
-      model: "gpt-3.5-turbo-1106",
-    })
-    .catch((error) => console.log(error));
+// const fixTranscript = async (transcript: string) => {
+//   console.log("start");
+//   const completion = await openai.chat.completions
+//     .create({
+//       messages: [
+//         {
+//           role: "system",
+//           content:
+//             "You are an assistant designed to make a long string readable for human beings. Add necessary punctuations. Make sure the text is divided into paragraphs for better readability. Add '###' where a new paragraph starts.",
+//         },
+//         {
+//           role: "user",
+//           content: `Format the text: ${transcript}`,
+//         },
+//       ],
+//       model: "gpt-3.5-turbo-1106",
+//     })
+//     .catch((error) => console.log(error));
 
-  return completion as ChatCompletion;
-};
+//   return completion as ChatCompletion;
+// };
 
-const summarizeTranscript = async (transcript: string) => {
-  console.log("start");
-  const completion = await openai.chat.completions
-    .create({
-      messages: [
-        {
-          role: "system",
-          content:
-            "You are an assistant designed to summarize longer vidoes. You are taking out most important information from a text and provide in concise form.",
-        },
-        {
-          role: "user",
-          content: `Summarize the transcript: ${transcript}`,
-        },
-      ],
-      model: "gpt-3.5-turbo-1106",
-    })
-    .catch((error) => console.log(error));
+// const summarizeTranscript = async (transcript: string) => {
+//   console.log("start");
+//   const completion = await openai.chat.completions
+//     .create({
+//       messages: [
+//         {
+//           role: "system",
+//           content:
+//             "You are an assistant designed to summarize longer vidoes. You are taking out most important information from a text and provide in concise form.",
+//         },
+//         {
+//           role: "user",
+//           content: `Summarize the transcript: ${transcript}`,
+//         },
+//       ],
+//       model: "gpt-3.5-turbo-1106",
+//     })
+//     .catch((error) => console.log(error));
 
-  return completion as ChatCompletion;
-};
+//   return completion as ChatCompletion;
+// };
