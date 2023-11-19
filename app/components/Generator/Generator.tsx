@@ -1,18 +1,19 @@
 "use client";
 
-import React, { useState, FormEvent, useCallback, useMemo } from "react";
+import React, { useMemo } from "react";
 import Loading from "@/components/Loading";
-import axios from "axios";
+import useGetTranscriptData from "./hooks/useGetTranscriptData";
 
 const Generator: React.FC = () => {
-  const [youtubeUrl, setYoutubeUrl] = useState<string>();
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
-  const [transcriptData, setTranscriptData] = useState<{
-    title?: string;
-    summary?: string;
-    transcript: string;
-  }>();
+  const {
+    hasError,
+    isLoading,
+    transcriptData,
+    setTranscriptData,
+    youtubeUrl,
+    setYoutubeUrl,
+    onGenerateTranscript,
+  } = useGetTranscriptData();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -21,34 +22,6 @@ const Generator: React.FC = () => {
   const onCloseTranscript = () => {
     setTranscriptData(undefined);
   };
-
-  const onGenerateTranscript = useCallback(
-    async (event: FormEvent<HTMLButtonElement>) => {
-      event.preventDefault();
-      setIsLoading(true);
-      await axios
-        .post("/api/transcript", {
-          youtubeUrl,
-        })
-        .then((response) => {
-          const data = response.data;
-          setTranscriptData({
-            transcript: data.transcript,
-            summary: data.summary,
-            title: data.videoTitle,
-          });
-          setYoutubeUrl(undefined);
-          setHasError(false);
-        })
-        .catch(() => {
-          setHasError(true);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    },
-    [youtubeUrl]
-  );
 
   const paragraphs = useMemo(() => {
     return transcriptData?.transcript.split("###");
