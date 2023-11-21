@@ -1,5 +1,5 @@
-import Card from "@/components/Card";
-import Generator from "./components/Generator/Generator";
+import Card from "@/app/_components/Card";
+import Generator from "../_components/Generator";
 
 export default function Home() {
   return (

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import TopBarExtraInfo from "@/components/TopBarExtraInfo";
+import Navbar from "@/app/_components/Navbar";
+import Footer from "@/app/_components/Footer";
+import TopBarExtraInfo from "@/app/_components/TopBarExtraInfo";
 
 import "./globals.css";
 

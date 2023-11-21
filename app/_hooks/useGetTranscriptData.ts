@@ -1,6 +1,6 @@
 import { useCallback, FormEvent, useState } from "react";
-import { transcriptEndpoint } from "@/app/helpers/endpoints";
 import axios from "axios";
+import { transcriptEndpoint } from "../_helpers/endpoints";
 
 const useGetTranscriptData = () => {
   const [youtubeUrl, setYoutubeUrl] = useState<string>();

@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useMemo } from "react";
-import Loading from "@/components/Loading";
-import useGetTranscriptData from "./hooks/useGetTranscriptData";
+import Loading from "@/app/_components/Loading";
+import useGetTranscriptData from "@/app/_hooks/useGetTranscriptData";
 
 const Generator: React.FC = () => {
   const {
