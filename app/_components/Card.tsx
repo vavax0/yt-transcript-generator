@@ -14,7 +14,7 @@ const Card: React.FC<CardProps> = ({
   buttonOnClick,
 }) => {
   return (
-    <div className="max-w-sm p-6 bg-zinc-900 border-zinc-800 border rounded-lg shadow basis-1/2">
+    <div className="max-w-sm p-6 bg-zinc-900 border-zinc-800 border rounded-lg shadow basis-1/3">
       <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {title}
       </h5>
