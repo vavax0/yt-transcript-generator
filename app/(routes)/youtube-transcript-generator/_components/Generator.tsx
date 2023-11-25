@@ -32,7 +32,7 @@ const Generator: React.FC = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <form className="flex flex-col gap-4 w-3/6 items-center">
+        <form className="flex flex-col gap-4 lg:w-3/6 items-center">
           <p className="font-bold">
             Enter URL To Generate The Youtube Transcript
           </p>

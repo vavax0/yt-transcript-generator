@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="flex flex-col flex-auto py-16 px-24 gap-10 items-center justify-center ">
+    <main className="flex flex-col flex-auto px-4 py-10 lg:py-16 lg:px-24 gap-10 items-center justify-center ">
       <div className="max-w-4xl flex flex-col items-center gap-10 ">
         <h1 className="text-center">
           Get YouTube Video Transcript in Seconds for Free 🎉
@@ -22,7 +22,7 @@ export default function Home() {
         </p>
         <Generator />
       </div>
-      <div className="flex gap-10">
+      <div className="flex flex-col gap-4 lg:flex-row lg:gap-10">
         <Card
           title="Instant and Accurate"
           content="Our tool generates precise transcript within seconds. Trust the YouTube Transcript Generator to deliver dependable text that faithfully mirrors your video content."
